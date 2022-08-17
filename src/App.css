@@ -12,15 +12,43 @@ body{
 #root{
 	display: flex;
 	align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 	padding: 50px;
+	width: 100%;
+}
+/*Highscore*/
+.highscore{
+	display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}
+/*Local Scoreboard*/
+.leaderboard{
+	width: 20%;
+	height: 80vh;
+	min-height: 500px;
+	border-radius: 10px;
+	background-color: #F5F5F5;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	
+}
+.score-tile{
+	background-color: white;
+	width: 80%;
+	height: 5vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 /* Main Game Board */
 main {
 	background-color: #F5F5F5;
 	width: 75%;
 	min-width: 470px;
-	height: 70vh;
+	height: 80vh;
 	min-height: 500px;
 	border-radius: 10px;
 	display: flex;
@@ -30,7 +58,7 @@ main {
 }
 .die-container{
 	display: grid;
-	grid-template-columns: repeat(5, 50px);
+	grid-template-columns: repeat(4, 50px);
 	gap: 50px;
 	padding: 50px 20px 50px 20px;
 	width: 100%;
@@ -82,8 +110,19 @@ main {
 }
 
 /*For smaller windows*/
-/* @media (max-width: 720px){
+@media (max-width: 500px){
 
+	main{
+		min-width: 400px;
+		background-color: #F5F5F5;
+	width: 75%;
+	height: 80vh;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	}
 	.die-container{
 	display: grid;
 	grid-template-columns: repeat(4, 50px);
@@ -92,4 +131,5 @@ main {
 	width: 100%;
 	justify-content: center;
 }
-} */
+	
+}
