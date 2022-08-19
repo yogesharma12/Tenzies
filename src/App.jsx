@@ -13,20 +13,21 @@ function App() {
 	const [tenzies, setTenzies] = React.useState(false)
 	// Number of clicks to win
 	const [clicks, setClicks] = React.useState(0)
+	// Local Highscore 
 	const [highscore, setHighscore] = React.useState(JSON.parse(localStorage.getItem('highscore')) || 100000)
 
 	console.log(highscore)
-	
-	
-	React.useEffect(() =>{
-		
-		if(clicks){
+
+
+	React.useEffect(() => {
+
+		if (clicks) {
 			setHighscore(clicks < JSON.parse(localStorage.getItem('highscore')) ? clicks : highscore)
 		}
-		
-		localStorage.setItem('highscore',JSON.stringify(highscore))
-		
-	},[tenzies])
+
+		localStorage.setItem('highscore', JSON.stringify(highscore))
+
+	}, [tenzies])
 
 	// Checks condition for win 
 	React.useEffect(() => {
@@ -37,8 +38,8 @@ function App() {
 
 		if (allHeld && allSameValue) {
 			setTenzies(true)
-			
-			
+
+
 		}
 
 	}, [dieNumber])
@@ -73,7 +74,6 @@ function App() {
 	// Handles Roll Button Click
 	function handleClick() {
 		if (tenzies) {
-			
 			setDieNumber(randomNum())
 			setTenzies(false)
 			setClicks(0)
@@ -83,11 +83,13 @@ function App() {
 				return die.isHeld ?
 					die : generateDice()
 			}))
-			
-			
-
 		}
-
+	}
+	// Reset Game function
+	function resetGame () {
+		setDieNumber(randomNum())
+		setTenzies(false)
+		setClicks(0)
 	}
 
 	return (
@@ -105,9 +107,9 @@ function App() {
 				{/*Game Instructions*/}
 				<h1 className="title">Tenzies</h1>
 				<p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-				
+
 				<div className="highscore">Your Highscore : {highscore === 100000 ? '--' : highscore}</div>
-				
+
 				{/*Dice Container*/}
 				<div className="die-container">
 					{
@@ -117,8 +119,9 @@ function App() {
 				</div>
 				<button className="roll-btn" onClick={handleClick}>{tenzies ? "New Game" : "Roll"}</button>
 				<p>Number of Clicks : {clicks}</p>
+				<button className="reset-btn" onClick={resetGame}>Reset Game</button>
 			</main>
-			
+
 		</>
 	);
 }
