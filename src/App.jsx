@@ -117,9 +117,13 @@ function App() {
 
 					}
 				</div>
-				<button className="roll-btn" onClick={handleClick}>{tenzies ? "New Game" : "Roll"}</button>
-				<p>Number of Clicks : {clicks}</p>
+				<p>Number of Rolls : {clicks}</p>
+				<div className="btn-holder">
 				<button className="reset-btn" onClick={resetGame}>Reset Game</button>
+				<button className="roll-btn" onClick={handleClick}>{tenzies ? "New Game" : "Roll"}</button>
+					</div>
+				
+				
 			</main>
 
 		</>
