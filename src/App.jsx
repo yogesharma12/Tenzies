@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import Die from './component/Die';
-import Score from './component/Score';
+//import Score from './component/Score';
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 
