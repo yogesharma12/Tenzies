@@ -4,6 +4,9 @@ import Die from './component/Die';
 //import Score from './component/Score';
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import {motion, AnimatePresence} from "framer-motion";
+import Modal from "./component/Modal"
+
 
 //App Component
 function App() {
@@ -15,10 +18,17 @@ function App() {
 	const [clicks, setClicks] = React.useState(0)
 	// Local Highscore 
 	const [highscore, setHighscore] = React.useState(JSON.parse(localStorage.getItem('highscore')) || 100000)
+	// Gamer name
+	const [gamerName, setGamerName] = React.useState(JSON.parse(localStorage.getItem('name')))
+	// Model Open State
+	const [modalOpen, setModalOpen] = React.useState(false)
 
-	console.log(highscore)
+console.log(gamerName)
 
+	const close = () => setModalOpen(false)
+	const open = () => setModalOpen(true)
 
+	// Update Highscore on load and on Win
 	React.useEffect(() => {
 
 		if (clicks) {
@@ -29,7 +39,7 @@ function App() {
 
 	}, [tenzies])
 
-	// Checks condition for win 
+	// Checks condition for win on every dice click
 	React.useEffect(() => {
 
 		const allHeld = dieNumber.every(dice => dice.isHeld)
@@ -38,8 +48,6 @@ function App() {
 
 		if (allHeld && allSameValue) {
 			setTenzies(true)
-
-
 		}
 
 	}, [dieNumber])
@@ -108,8 +116,25 @@ function App() {
 				<h1 className="title">Tenzies</h1>
 				<p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
 
-				<div className="highscore">Your Highscore : {highscore === 100000 ? '--' : highscore}</div>
-
+				<div className="gamer-info">
+					
+						<motion.button 
+							whileHover={{scale: 1.1}}
+							whileTap={{scale: 0.9}}
+							className="name-btn" 
+							onClick={()=> (modalOpen ? close() : open())}
+							>
+							{!gamerName ? 'Enter your gamer name' : `Hello ${gamerName}`}
+						</motion.button>
+						
+					<p>Highscore : {highscore === 100000 ? '--' : highscore}</p>
+				
+				</div>
+				{modalOpen && <Modal setGamerName={setGamerName} modalOpen={modalOpen} handleClose={close}/>}
+				<AnimatePresence>
+				{modalOpen && <Modal setGamerName={setGamerName} modalOpen={modalOpen} handleClose={close}/>}
+				</AnimatePresence>
+				
 				{/*Dice Container*/}
 				<div className="die-container">
 					{
