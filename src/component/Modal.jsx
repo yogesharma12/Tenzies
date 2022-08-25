@@ -26,14 +26,14 @@ import Backdrop from "./Backdrop.jsx";
 const Modal = (props) => {
 
 	const [confirm, setConfirm] = React.useState(false)
-	const [name , setName] = React.useState('')
+	const inputRef = React.useRef(null)
+	
 
 	const handleConfirm = () => {
 		setConfirm(true)
-		props.setGamerName(name)
+		props.setGamerName(inputRef.current.value)
 		props.handleClose()
 	}
-	
 	
 	//The  Modal Component
 	return (
@@ -75,11 +75,10 @@ const Modal = (props) => {
 				
 				<h2>Enter your gaming name to log it in LeaderBoard</h2>
 				<input 
+					ref={inputRef}
 					type="text"
 					placeholder="Your name here"
 					className="name-input"
-					value={name}
-					onChange={(e)=> setName(e.target.value)}
 					/>
 				<div>
 					<button onClick={props.handleClose} className="reset-btn">Cancel</button>
