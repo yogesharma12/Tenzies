@@ -32,13 +32,13 @@ const Modal = (props) => {
 	const handleConfirm = () => {
 		setConfirm(true)
 		props.setGamerName(inputRef.current.value)
-		props.handleClose()
+		props.onClose()
 	}
 	
 	//The  Modal Component
 	return (
 		
-		<Backdrop onClick={props.handleClose}>
+		<Backdrop onClick={props.onClose}>
 			<motion.div 
 				onClick={(e)=> e.stopPropagation()}
 				className="modal"
@@ -70,7 +70,7 @@ const Modal = (props) => {
 				
 				>
 				<div className="modaltop-container">
-					<button className="close-btn" onClick={props.handleClose}>X</button>
+					<button className="close-btn" onClick={props.onClose}>X</button>
 				</div>
 				
 				<h2>Enter your gaming name to log it in LeaderBoard</h2>
@@ -81,7 +81,7 @@ const Modal = (props) => {
 					className="name-input"
 					/>
 				<div>
-					<button onClick={props.handleClose} className="reset-btn">Cancel</button>
+					<button onClick={props.onClose} className="reset-btn">Cancel</button>
 					<button onClick={handleConfirm} className="roll-btn">Confirm</button>
 
 				</div>

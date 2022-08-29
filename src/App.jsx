@@ -21,12 +21,11 @@ function App() {
 	// Gamer name
 	const [gamerName, setGamerName] = React.useState(JSON.parse(localStorage.getItem('name')))
 	// Model Open State
-	const [modalOpen, setModalOpen] = React.useState(false)
+	const [isModalOpen, setIsModalOpen] = React.useState(false)
 
-console.log(gamerName)
 
-	const close = () => setModalOpen(false)
-	const open = () => setModalOpen(true)
+	const handleClose = () => setIsModalOpen(false)
+	const open = () => setIsModalOpen(true)
 
 	// Update Highscore on load and on Win
 	React.useEffect(() => {
@@ -63,6 +62,7 @@ console.log(gamerName)
 
 	// To create an array of random Dices
 	function randomNum() {
+		
 		const randomArr = []
 		for (let i = 0; i < 12; i++) {
 			randomArr.push(generateDice())
@@ -95,9 +95,11 @@ console.log(gamerName)
 	}
 	// Reset Game function
 	function resetGame () {
+		console.log('reset ran')
 		setDieNumber(randomNum())
 		setTenzies(false)
 		setClicks(0)
+		
 	}
 
 	return (
@@ -122,7 +124,7 @@ console.log(gamerName)
 							whileHover={{scale: 1.1}}
 							whileTap={{scale: 0.9}}
 							className="name-btn" 
-							onClick={()=> (modalOpen ? close() : open())}
+							onClick={()=> (isModalOpen ? handleClose() : open())}
 							>
 							{!gamerName ? 'Enter your gamer name' : `Hello ${gamerName}`}
 						</motion.button>
@@ -130,9 +132,9 @@ console.log(gamerName)
 					<p>Highscore : {highscore === 100000 ? '--' : highscore}</p>
 				
 				</div>
-				{modalOpen && <Modal setGamerName={setGamerName} modalOpen={modalOpen} handleClose={close}/>}
+				{/*isModalOpen && <Modal setGamerName={setGamerName} isModalOpen={isModalOpen} handleClose={handleClose}/>*/}
 				<AnimatePresence>
-				{modalOpen && <Modal setGamerName={setGamerName} modalOpen={modalOpen} handleClose={close}/>}
+				{isModalOpen && <Modal setGamerName={setGamerName} isOpen={isModalOpen} onClose={handleClose}/>}
 				</AnimatePresence>
 				
 				{/*Dice Container*/}
