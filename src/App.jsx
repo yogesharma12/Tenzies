@@ -10,7 +10,8 @@ import Modal from "./component/Modal"
 
 //App Component
 function App() {
-
+	
+console.log('App Component rendered')
 	// Dice and Tenzies State declaration
 	const [dieNumber, setDieNumber] = React.useState(randomNum())
 	const [tenzies, setTenzies] = React.useState(false)
@@ -67,6 +68,7 @@ function App() {
 		for (let i = 0; i < 12; i++) {
 			randomArr.push(generateDice())
 		}
+		//console.log(randomArr)
 		return randomArr
 	}
 
