@@ -32,6 +32,7 @@ const Modal = (props) => {
 	const handleConfirm = () => {
 		setConfirm(true)
 		props.setGamerName(inputRef.current.value)
+		localStorage.setItem('name', JSON.stringify(inputRef.current.value))
 		props.onClose()
 	}
 	
