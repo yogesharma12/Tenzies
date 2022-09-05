@@ -115,8 +115,8 @@ main {
 }
 
 .title {
-    font-size: 3rem;
-    margin: 0;
+  font-size: 3rem;
+  margin: 0;
 }
 
 .instructions {
@@ -205,4 +205,35 @@ main {
 	justify-content: center;
 }
 	
+}
+
+.header-class{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+.left-menu{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 150px;
+	
+}
+.right-menu{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 150px;
+}
+.svgicons{
+	height: 50px;
+	width: 50px;
+}
+.menu-btn{
+	border: none;
+	cursor: pointer;
+}
+.menu-btn:active{
+	background: rgba(0,0,0,0.3);
 }

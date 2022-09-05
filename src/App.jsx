@@ -117,7 +117,18 @@ console.log('App Component rendered')
 				{tenzies && <Confetti />}
 
 				{/*Game Instructions*/}
-				<h1 className="title">Tenzies</h1>
+				<header className="header-class">
+					<div className="left-menu">
+						<button className="menu-btn"> <img className="svgicons" src="/src/images/leftmenu-img.svg" /></button>
+					</div>
+					<h1 className="title">Tenzies</h1>
+					<div className="right-menu">
+						<button className="menu-btn"><img className="svgicons" src="/src/images/help-img.svg" /> </button>
+						<button className="menu-btn"><img className="svgicons" src="/src/images/leaderboard-img.svg" /> </button>
+						<button className="menu-btn"><img className="svgicons" src="/src/images/settings-img.svg" /> </button>
+					</div>
+				</header>
+				
 				<p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
 
 				<div className="gamer-info">
