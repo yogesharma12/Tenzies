@@ -5,7 +5,9 @@ import Die from './component/Die';
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 import {motion, AnimatePresence} from "framer-motion";
-import Modal from "./component/Modal"
+import Modal from "./component/Modal";
+import Help from "./component/Help";
+
 
 
 //App Component
@@ -23,7 +25,10 @@ console.log('App Component rendered')
 	const [gamerName, setGamerName] = React.useState(JSON.parse(localStorage.getItem('name')))
 	// Model Open State
 	const [isModalOpen, setIsModalOpen] = React.useState(false)
-
+	// Opened Modal Name
+	const [isHelpOpen, setIsHelpOpen] = React.useState(false)
+	const handleHelpClose = () => setIsHelpOpen(false)
+	const helpOpen = () => setIsHelpOpen(true)
 
 	const handleClose = () => setIsModalOpen(false)
 	const open = () => setIsModalOpen(true)
@@ -113,6 +118,7 @@ console.log('App Component rendered')
 			</section>*/}
 			{/*Main Game Frame*/}
 			<main>
+				
 				{/*Conditional rendering for Confetti component*/}
 				{tenzies && <Confetti />}
 
@@ -123,13 +129,12 @@ console.log('App Component rendered')
 					</div>
 					<h1 className="title">Tenzies</h1>
 					<div className="right-menu">
-						<button className="menu-btn"><img className="svgicons" src="/src/images/help-img.svg" /> </button>
-						<button className="menu-btn"><img className="svgicons" src="/src/images/leaderboard-img.svg" /> </button>
-						<button className="menu-btn"><img className="svgicons" src="/src/images/settings-img.svg" /> </button>
+						<button className="menu-btn" onClick={()=> (isHelpOpen ? setIsHelpOpen(false) : setIsHelpOpen(true))}><img className="svgicons" src="/src/images/help-img.svg" /> </button>
+						<button className="menu-btn" onClick={()=> (isModalOpen ? handleClose() : open())}><img className="svgicons" src="/src/images/settings-img.svg" /> </button>
 					</div>
 				</header>
 				
-				<p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
+				
 
 				<div className="gamer-info">
 					
@@ -145,9 +150,11 @@ console.log('App Component rendered')
 					<p>Highscore : {highscore === 100000 ? '--' : highscore}</p>
 				
 				</div>
-				{/*isModalOpen && <Modal setGamerName={setGamerName} isModalOpen={isModalOpen} handleClose={handleClose}/>*/}
+				
 				<AnimatePresence>
-				{isModalOpen && <Modal setGamerName={setGamerName} isOpen={isModalOpen} onClose={handleClose}/>}
+		{isModalOpen && <Modal setGamerName={setGamerName} isOpen={isModalOpen} onClose={handleClose}/>}
+					{isHelpOpen && <Help isOpen={helpOpen} onClose={handleHelpClose}/>}
+			
 				</AnimatePresence>
 				
 				{/*Dice Container*/}
