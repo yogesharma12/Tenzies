@@ -1,5 +1,5 @@
 import React from 'react';
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import Backdrop from "./Backdrop.jsx";
 
 // const dropIn = {
@@ -27,7 +27,7 @@ const Modal = (props) => {
 
 	const [confirm, setConfirm] = React.useState(false)
 	const inputRef = React.useRef(null)
-	
+
 
 	const handleConfirm = () => {
 		setConfirm(true)
@@ -35,13 +35,13 @@ const Modal = (props) => {
 		localStorage.setItem('name', JSON.stringify(inputRef.current.value))
 		props.onClose()
 	}
-	
+
 	//The  Modal Component
 	return (
-		
+
 		<Backdrop onClick={props.onClose}>
-			<motion.div 
-				onClick={(e)=> e.stopPropagation()}
+			<motion.div
+				onClick={(e) => e.stopPropagation()}
 				className="modal"
 				//varients={dropIn}
 				initial={
@@ -54,13 +54,13 @@ const Modal = (props) => {
 					{
 						y: "0",
 						opacity: 1,
-						transition : {
+						transition: {
 							duration: 0.1,
 							type: "spring",
 							damping: 25,
 							stiffness: 500,
+						}
 					}
-				}
 				}
 				exit={
 					{
@@ -68,25 +68,25 @@ const Modal = (props) => {
 						opacity: 0,
 					}
 				}
-				
-				>
+
+			>
 				<div className="modaltop-container">
 					<button className="close-btn" onClick={props.onClose}>X</button>
 				</div>
-				
+
 				<h2>Enter your gaming name to log it in LeaderBoard</h2>
-				<input 
+				<input
 					ref={inputRef}
 					type="text"
 					placeholder="Your name here"
 					className="name-input"
-					/>
+				/>
 				<div>
 					<button onClick={props.onClose} className="reset-btn">Cancel</button>
 					<button onClick={handleConfirm} className="roll-btn">Confirm</button>
 
 				</div>
-				
+
 			</motion.div>
 		</Backdrop>
 

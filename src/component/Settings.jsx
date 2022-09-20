@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import Backdrop from "./Backdrop.jsx";
+import Switch from "react-switch";
 
 
-const Help = (props) => {
+const Settings = (props) => {
 
+	//const [checked, setChecked] = useState(false);
 
-	//The  Help Component
+	//The  Settings Component
 	return (
 
 		<Backdrop onClick={props.onClose}>
@@ -43,14 +45,15 @@ const Help = (props) => {
 					<button className="close-btn" onClick={props.onClose}>X</button>
 				</div>
 
-				<h1 className="help-heading">How to Play?</h1>
-
-				<ul className="rules">
-					<li>Click on Roll button to roll the dice</li>
-					<li>Click on each die to freeze it's value</li>
-					<li>Freeze all the dice with same value</li>
-					<li>Click on Reset button to restart the game</li>
-				</ul>
+				<h2>Settings</h2>
+				<div className="setting-tabs">
+					<div className="settings-row">
+						<p>Dark Theme</p>
+						<Switch
+						//onChange={() => setChecked(checked ? false : true)}
+						/>
+					</div>
+				</div>
 
 			</motion.div>
 		</Backdrop>
@@ -58,5 +61,5 @@ const Help = (props) => {
 	);
 }
 
-export default Help;
+export default Settings;
 
