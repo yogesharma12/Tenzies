@@ -1,17 +1,15 @@
 import React from 'react';
 import { motion } from "framer-motion";
 import Backdrop from "./Backdrop.jsx";
-import Switch from "react-switch";
+import {ThemeContext} from "../context/ThemeContext.jsx";
 
 
 const Settings = (props) => {
-
-	//const [checked, setChecked] = useState(false);
-
+	const { theme, toggleFunction } = React.useContext(ThemeContext);
 	//The  Settings Component
 	return (
 
-		<Backdrop onClick={props.onClose}>
+		<Backdrop onClick={props.onClose} >
 			<motion.div
 				onClick={(e) => e.stopPropagation()}
 				className="modal"
@@ -48,10 +46,9 @@ const Settings = (props) => {
 				<h2>Settings</h2>
 				<div className="setting-tabs">
 					<div className="settings-row">
-						<p>Dark Theme</p>
-						<Switch
-						//onChange={() => setChecked(checked ? false : true)}
-						/>
+						<p>Theme</p>
+						<button className="switch" onClick={toggleFunction}>change</button>
+						{ theme === "theme-dark" ? "dark" : "light"}
 					</div>
 				</div>
 
