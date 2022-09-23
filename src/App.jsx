@@ -41,6 +41,8 @@ function App() {
 
 	const {theme} = React.useContext(ThemeContext);
 
+	
+
 	// Update Highscore on load and on Win
 	React.useEffect(() => {
 

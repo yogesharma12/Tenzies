@@ -4,7 +4,7 @@ const ThemeContext = React.createContext("theme-light")
 
 const ThemeProvider = ({ children }) => {
 
-	const [ theme, setTheme] = React.useState("theme-light");
+	const [ theme, setTheme] = React.useState(JSON.parse(localStorage.getItem('theme')) || "theme-light");
 	const toggleFunction = () => {
 		if( theme === "theme-light"){
 			setTheme("theme-dark")
@@ -14,6 +14,12 @@ const ThemeProvider = ({ children }) => {
 		}
 		
 	}
+
+	React.useEffect(()=> {
+		localStorage.setItem('theme', JSON.stringify(theme))
+	}, [theme])
+
+	
 	
 	return(
 		<ThemeContext.Provider value={{ theme, toggleFunction }}>
