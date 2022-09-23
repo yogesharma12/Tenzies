@@ -1,9 +1,15 @@
 import React from 'react';
+import {ThemeContext} from "../context/ThemeContext.jsx";
+
 
 function Die(props) {
-	//Conditional Color property - based on isHeld 
+
+	const { theme } = React.useContext(ThemeContext);
+	
+	//Conditional Color property - based on isHeld
+	
 	const styles = {
-		backgroundColor: props.isHeld ? "#59E391" : "white"
+		backgroundColor: props.isHeld ? (theme === "theme-light" ? "#59E391" : "darkgreen") : (theme === "theme-light" ? "white" : "#0B2434")
 	}
 
 	//The Dice Component

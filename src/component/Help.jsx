@@ -2,10 +2,9 @@ import React from 'react';
 import { motion } from "framer-motion";
 import Backdrop from "./Backdrop.jsx";
 
-
 const Help = (props) => {
 
-
+	
 	//The  Help Component
 	return (
 

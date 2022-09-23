@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Modal from "./component/Modal";
 import Help from "./component/Help";
 import Settings from "./component/Settings";
+import {ThemeContext} from "./context/ThemeContext.jsx";
 
 
 
@@ -37,6 +38,10 @@ function App() {
 
 	const handleClose = () => setIsModalOpen(false)
 	const open = () => setIsModalOpen(true)
+
+	const {theme} = React.useContext(ThemeContext);
+
+	
 
 	// Update Highscore on load and on Win
 	React.useEffect(() => {
@@ -116,18 +121,14 @@ function App() {
 
 	return (
 		<>
-			{/*LeaderBoard*/}
-			{/*<section className="leaderboard">
-				<h1 className="score-title">LeaderBoard</h1>
-				
-			</section>*/}
+			
 			{/*Main Game Frame*/}
-			<main>
+			<main className={theme}>
 
 				{/*Conditional rendering for Confetti component*/}
 				{tenzies && <Confetti />}
 
-				{/*Game Instructions*/}
+				{/*Menu & Title*/}
 				<header className="header-class">
 					<div className="left-menu">
 						<button className="menu-btn"> <img className="svgicons" src="/src/images/leftmenu-img.svg" /></button>
@@ -138,8 +139,6 @@ function App() {
 						<button className="menu-btn" onClick={() => (isSettingsOpen ? setIsSettingsOpen(false) : setIsSettingsOpen(true))}><img className="svgicons" src="/src/images/settings-img.svg" /> </button>
 					</div>
 				</header>
-
-
 
 				<div className="gamer-info">
 
@@ -170,7 +169,7 @@ function App() {
 
 					}
 				</div>
-				<p>Number of Rolls : {clicks}</p>
+				<p className="click-count">Number of Rolls : {clicks}</p>
 				<div className="btn-holder">
 					<button className="reset-btn" onClick={resetGame}>Reset Game</button>
 					<button className="roll-btn" onClick={handleClick}>{tenzies ? "New Game" : "Roll"}</button>

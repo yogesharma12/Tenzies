@@ -3,8 +3,20 @@
 	padding: 0;
 	box-sizing : border-box;
 }
+.theme-light {
+	--game-background: #F5F5F5;
+	--font-color: #000000;
+	--tile-color: #ffffff;
+	--close-btn-color: #000000;
+}
+.theme-dark {
+	--game-background: #243133;
+	--font-color: #ffffff;
+	--tile-color: #453375;
+	--close-btn-color: #ffffff;
+}
 body{
-	background: #9d9e9f;
+	background: #9199a1;
 	display: flex;
 	align-items: center;
   justify-content: center;
@@ -16,37 +28,19 @@ body{
 	padding: 50px;
 	width: 100%;
 }
+
 /*Highscore*/
 .gamer-info{
+	color: var(--font-color);
 	display: flex;
   justify-content: space-around;
 	align-items: center;
   width: 90%;
 }
-/*Local Scoreboard*/
-.leaderboard{
-	width: 20%;
-	height: 80vh;
-	min-height: 500px;
-	border-radius: 10px;
-	background-color: #F5F5F5;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	
-}
-.score-tile{
-	background-color: white;
-	width: 80%;
-	height: 5vh;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
+
 /* Main Game Board */
 main {
-	background-color: #F5F5F5;
+	background-color: var(--game-background);
 	width: 75%;
 	min-width: 470px;
 	height: 85vh;
@@ -75,10 +69,10 @@ main {
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	background-color:  white;
 }
 
 .die-num{
+	color: var(--font-color);
 	font-size: 2rem;
 }
 
@@ -115,6 +109,7 @@ main {
 }
 
 .title {
+	color: var(--font-color);
   font-size: 3rem;
   margin: 0;
 }
@@ -153,7 +148,8 @@ main {
 
 	margin: auto;
 	padding: 20px;
-	background: #e6e6e6;
+	background: var(--game-background);
+	color: var(--font-color);
 	border-radius: 20px;
 	display: flex;
 	flex-direction: column;
@@ -176,7 +172,7 @@ main {
 	background: none;
 	border: none;
 	font-size: 30px;
-	color: black;
+	color: var(--close-btn-color);
 	cursor: pointer;
 }
 
@@ -264,4 +260,21 @@ main {
 
 .help-heading{
 	margin-bottom: 20px;
+}
+.setting-tabs{
+	width: 50%;
+	padding: 3vh;
+}
+.settings-row{
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+.switch{
+	/*color: var(--font-color);
+	background-color: var(--game-background);*/
+	margin-left: 20vh;
+}
+.click-count{
+	color: var(--font-color);
 }
